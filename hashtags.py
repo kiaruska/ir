@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.6
 # -*- coding: utf-8 -*-
 
 import json
@@ -44,7 +44,7 @@ class TweetParser(object):
 		
 		print( "Extracting hashtags from tweets..." )
 		for tweets_to_write in self.data:
-			self.extract_hashtags(json.loads(tweets_to_write.decode()))
+			self.extract_hashtags(json.loads(tweets_to_write))
 			counter += 1
 			if counter % 1000 == 0:
 				print( "Dictionary size is {0}.".format( len(self.hashtags) ) )
@@ -56,7 +56,7 @@ class TweetParser(object):
 			for ids in self.hashtags[h]:
 				tweets += ' ' + str( ids )
 			
-			self.output.write( "{0}{1}\n".format( h, tweets ) )
+			self.output.write( u"{0}{1}\n".format( h, tweets ) )
 		print( "Done." )
 
 
