@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import json
@@ -33,7 +33,7 @@ class TweetParser(object):
         text = " ".join(text.splitlines()) # split text
         text = text.strip() # remove trailing spaces
         text = re.sub("http\:\S*", " ", text) # remove http://X
-        text = re.sub("#", ' ', text) # remove hashes
+	text = re.sub("#", ' ', text) # remove hashes
 	text = re.sub("@\w*", ' ', text) #remove usernames
         text = re.sub("\s+", ' ', text) # remove multiple whitespaces
         return text
