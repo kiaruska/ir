@@ -14,7 +14,6 @@ The first lines contains the followers with less politicians.
 
 import sys
 import gzip
-import bz2
 
 class Graph ( object ):
 	'''map for the associations follower -> [politicians]'''
@@ -28,8 +27,6 @@ class Graph ( object ):
 		'''if file is compressed use gzip.open..'''
 		if fileName[-3:] == '.gz':
 			input = gzip.open( fileName )
-		elif fileName[-4:] == ".bz2":
-			input = bz2.BZ2File( fileName )
 		else:	input = open( fileName )
 		
 		'''this creates an entry in the dictionary for every follower'''

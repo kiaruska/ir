@@ -4,11 +4,7 @@
 import json
 import gzip
 import codecs
-import re
-import os
-import time
 import sys
-import locale
 
 
 class TweetParser(object):
