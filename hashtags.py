@@ -42,8 +42,8 @@ class TweetParser(object):
 		for tweets_to_write in self.data:
 			self.extract_hashtags(json.loads(tweets_to_write))
 			counter += 1
-			if counter % 1000 == 0:
-				print( "Dictionary size is {0}.".format( len(self.hashtags) ) )
+			if counter % 2000 == 0:
+				print( "Read {0} lines. Dictionary size is {1}.".format( counter, len(self.hashtags) ) )
 		
 		print( "Done.\nNow sorting them and saving..." )
 		sortedHashtags = sorted( self.hashtags.keys() ) #, key=str.lower )
