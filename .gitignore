@@ -1,3 +1,10 @@
-data
+data/*
 *~
 *.class
+
+
+
+
+# here I reinclude some example files that are useful (and small)
+!data/example.tweet
+!data/twitter.graph
