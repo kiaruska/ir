@@ -1,0 +1,22 @@
+
+Files
+
+=========================================================================================================
+
+graph.py	Takes as input a graph file (see slides for the format) and returns a new graph file 
+		where each row has this format:
+			
+			userID	length	[politicianID]
+				
+		Where length is the size of the politicians list.
+		It prints also some statistics on the distribution of users.
+
+=========================================================================================================
+
+hashtags.py	Takes as input a tweet file (see slides for the format) and returns a file
+		with the following format:
+				
+			hashtag  [tweetID]
+			
+		That is the text of the hashtag followed by a sequence of tweetIDs that contains that
+		hashtag.

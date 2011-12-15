@@ -3,6 +3,7 @@
 
 import json
 import gzip
+import bz2
 import codecs
 import re
 import os
@@ -16,12 +17,13 @@ class TweetParser(object):
 		self.filename = filename
 		self.hashtags = dict()
 
-	def extract_hashtags(self, jason_user):
-		user = jason_user['user']
-		for tweet in jason_user['tweets']:
+	def extract_hashtags(self, juser):				# juser is a json object containing the tweets of the user
+		user = juser['user']
+		for tweet in jason_user['tweets']:			# get the tweets objects
 			tweetID = tweet['id_str']
-			for hashes in tweet['entities']['hashtags']:
-				h = hashes['text']
+			for hashes in tweet['entities']['hashtags']:	# get the hashtag objects
+				h = hashes['text']			# get the hashtag text (the hashtag)
+				#h = unicode.lower( hashes['text'] )
 				
 				if h not in self.hashtags:
 					self.hashtags[h] = set()
@@ -31,6 +33,8 @@ class TweetParser(object):
 	def parse(self):
 		if self.filename[-3:] == ".gz":
 			self.data = gzip.open(self.filename)
+		elif self.filename[-4:] == ".bz2":
+			self.data = bz2.BZ2File(self.filename)
 		else:	self.data = open(self.filename)
 			
 		self.output = codecs.open(self.filename + '.hashtags', 'w', 'utf-8' )
