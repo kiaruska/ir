@@ -5,6 +5,7 @@ import json
 import gzip
 import codecs
 import sys
+import lzma
 
 
 class TweetParser(object):
@@ -26,8 +27,8 @@ class TweetParser(object):
 				self.hashtags[h].add(tweetID)
 	
 	def parse(self):
-		if self.filename[-3:] == ".gz":
-			self.data = gzip.open(self.filename)
+		if self.filename[-3:] == ".xz":
+			self.data = lzma.LZMAFile(self.filename)
 		else:	self.data = open(self.filename)
 			
 		self.output = codecs.open(self.filename + '.hashtags', 'w', 'utf-8' )
