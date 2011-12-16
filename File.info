@@ -1,0 +1,5 @@
+example.tweet  				dati sottoforma di JSON 
+example.tweet.hashtags			hashtags (idtweets)+
+twitter.graph				grafo connessioni ???
+example.tweet.hashtags.user		hashtags (#user1 (idtweets)+)+    
+				[attenzione fare prove con più user con lo stesso hashtag con i dati attuali non è possibile]
