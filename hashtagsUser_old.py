@@ -29,7 +29,8 @@ class TweetParser(object):
 					self.hashtags[h] = diz	
 				else:
 					if self.hashtags[h][user]:
-						 self.hashtags[h][user].append(tweetID)
+					        self.hashtags[h][user].append(tweetID)
+	
 	def parse(self):
 		if self.filename[-3:] == ".xz":
 			self.data = lzma.LZMAFile(self.filename)
@@ -53,16 +54,15 @@ class TweetParser(object):
 		print( "Done.\nNow sorting them and saving..." )
 		sortedHashtags = sorted( self.hashtags.keys() ) #, key=str.lower )
 		for h in sortedHashtags:
+			tweets = ''
 			diz = self.hashtags[h]
 			sortedUsers = sorted( diz.keys() ) #, key=str.lower ) #ordinare numeri????
-			tweets = ''
 			for u in sortedUsers:
-				tweets += " #" + str(u)
 				if self.hashtags[h][u]:
 					for ids in self.hashtags[h][u]:
 						tweets += ' ' + str(ids)
-				
-			self.output.write( u"{0}{1}\n".format( h,tweets ) )
+				else: tweets = "ciao"
+				self.output.write( u"{0} {1}{2}\n".format( h,"#"+str(u),tweets ) )
 		print( "Done." )
 
 
